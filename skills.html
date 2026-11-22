@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#101d3a">
+  <meta name="description" content="Skills and areas Kara is learning and developing.">
+  <title>Skills — Kara | Personal Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --navy:#101d3a;--navy-2:#17294e;--blue:#477bdb;--blue-light:#eaf1ff;
+      --ink:#17213a;--muted:#6d7891;--paper:#fff;--bg:#f5f7fb;
+      --line:#e5eaf3;--lime:#c5f36a;--font:'Manrope','DM Sans',sans-serif;
+      --header-bg:rgba(248,250,255,.86);--nav-text:#66718a;--soft-shadow:rgba(16,29,58,.06);
+      --footer-bg:#101d3a;--footer-text:#c5d2e8;--footer-muted:#91a2c0;
+      --page-wash:linear-gradient(135deg,#f8faff 0%,#f1f5ff 48%,#f8f6ff 100%);
+      --glow-one:rgba(111,157,255,.20);--glow-two:rgba(174,151,255,.16);
+      --surface-glass:rgba(255,255,255,.72);
+    }
+    [data-theme="dark"]{
+      --ink:#e9eef9;--muted:#aab7ce;--paper:#182642;--bg:#0b1428;
+      --line:#263653;--blue-light:#1c3155;--header-bg:rgba(11,20,40,.84);
+      --nav-text:#aab7ce;--soft-shadow:rgba(0,0,0,.22);
+      --page-wash:linear-gradient(135deg,#0b1428 0%,#101d38 52%,#17152f 100%);
+      --glow-one:rgba(53,112,224,.18);--glow-two:rgba(137,91,220,.13);
+      --surface-glass:rgba(21,37,66,.72);
+      --footer-bg:#070e1d;--footer-text:#d5def0;--footer-muted:#8799b8;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:var(--page-wash);background-attachment:fixed;color:var(--ink);font-family:var(--font);font-size:14px;line-height:1.7;transition:background .35s ease,color .28s ease;position:relative;isolation:isolate}
+    body:before,body:after{content:"";position:fixed;z-index:-1;pointer-events:none;border-radius:50%;filter:blur(2px);transition:opacity .35s ease}
+    body:before{width:520px;height:520px;top:90px;left:-230px;background:radial-gradient(circle,var(--glow-one) 0%,transparent 68%);opacity:.95}
+    body:after{width:600px;height:600px;right:-260px;top:380px;background:radial-gradient(circle,var(--glow-two) 0%,transparent 68%);opacity:.9}
+    .shell{position:relative}
+    .hero{position:relative}
+    .hero:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.22;background-image:radial-gradient(rgba(90,125,190,.22) .7px,transparent .7px);background-size:22px 22px;mask-image:linear-gradient(90deg,black,transparent 80%)}
+    [data-theme="dark"] .hero:before{opacity:.12;background-image:radial-gradient(rgba(150,180,240,.35) .7px,transparent .7px)}
+    .quickbar{backdrop-filter:blur(18px);background:var(--surface-glass)}
+    a{color:inherit}
+    button{font-family:inherit}
+    .header{background:var(--header-bg)}
+    [data-theme="dark"] .header{border-bottom-color:var(--line)}
+    [data-theme="dark"] .brand{color:#e9eef9}
+    [data-theme="dark"] .nav a{color:var(--nav-text)}
+    [data-theme="dark"] .nav a:hover,[data-theme="dark"] .nav a.active{color:#79a5ff}
+    [data-theme="dark"] .menu span{background:#e9eef9}
+    [data-theme="dark"] .lang{background:#172642;border-color:var(--line);color:#c4d0e5}
+    [data-theme="dark"] .hero h1{color:#edf3ff}
+    [data-theme="dark"] .role{color:#c8d5eb}
+    [data-theme="dark"] .kicker,[data-theme="dark"] .meta{color:#9babc5}
+    [data-theme="dark"] .secondary{color:#dce7fb;border-color:#526582}
+    [data-theme="dark"] .quickbar{background:#121f38;border-color:var(--line);box-shadow:0 10px 30px var(--soft-shadow)}
+    [data-theme="dark"] .quick-value{color:#e7eefb}
+    [data-theme="dark"] .quick-label{color:#91a4c2}
+    [data-theme="dark"] .floating{background:#f8faff;color:#101d3a}
+    [data-theme="dark"] .nav.open{background:#101d35;border-color:var(--line)}
+    .theme-toggle{width:36px;height:36px;border:1px solid var(--line);border-radius:50%;background:var(--paper);color:var(--navy);display:grid;place-items:center;cursor:pointer;font-size:16px;transition:transform .2s,background .2s}
+    .theme-toggle:hover{transform:rotate(12deg) scale(1.06)}
+    [data-theme="dark"] .theme-toggle{background:#172642;color:#f7d778;border-color:#344765}
+    .header-right{gap:10px}
+    .shell{max-width:1500px;margin:auto;overflow:hidden}
+    .header{height:82px;padding:0 7.2%;display:flex;align-items:center;justify-content:space-between;background:var(--header-bg);backdrop-filter:blur(18px);border-bottom:1px solid rgba(225,231,241,.85);position:sticky;top:0;z-index:20}
+    [data-theme="dark"] .nav.open{background:#101d35!important;border-color:#263653!important}
+    [data-theme="dark"] .header{background:rgba(11,20,40,.96)!important;border-bottom:1px solid #263653!important}
+    [data-theme="dark"] .header .brand{color:#e9eef9!important}
+    [data-theme="dark"] .header .nav a{color:#aab7ce}
+    [data-theme="dark"] .header .nav a:hover,[data-theme="dark"] .header .nav a.active{color:#79a5ff}
+    [data-theme="dark"] .header .lang{background:#172642;color:#c4d0e5;border-color:#344765}
+    [data-theme="dark"] .header .theme-toggle{background:#172642;color:#f7d778;border-color:#344765}
+    [data-theme="dark"] .header .menu span{background:#e9eef9}
+
+    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-size:12px;font-weight:800;letter-spacing:.2em;color:var(--navy)}
+    .brand-mark{width:36px;height:36px;display:grid;place-items:center;border-radius:11px;background:var(--navy);color:white;font-size:16px;letter-spacing:-.06em}
+    .brand-dot{color:var(--blue)}
+    .nav{display:flex;align-items:center;gap:30px}
+    .nav a{font-size:11px;font-weight:700;text-decoration:none;color:#66718a;transition:.2s}
+    .nav a:hover,.nav a.active{color:var(--blue)}
+    .nav a.active:after{content:"";display:block;width:5px;height:5px;background:var(--blue);border-radius:50%;margin:4px auto -9px}
+    .header-right{display:flex;align-items:center;gap:18px}
+    .lang{border:1px solid var(--line);background:#fff;border-radius:30px;padding:8px 12px;font:700 10px var(--font);color:var(--muted);cursor:pointer}
+    .lang b{color:var(--blue)}
+    .menu{display:none;border:0;background:none;padding:8px}
+    .menu span{display:block;width:22px;height:2px;background:var(--navy);margin:5px}
+    .hero{padding:64px 7.2% 60px;min-height:680px;display:grid;grid-template-columns:1.08fr .92fr;gap:7%;align-items:center;position:relative}
+    .hero:before{content:"";position:absolute;width:520px;height:520px;border-radius:50%;right:5%;top:10%;background:radial-gradient(circle,rgba(71,123,219,.12),rgba(71,123,219,0) 68%);pointer-events:none}
+    .hero-copy,.hero-art{position:relative;z-index:1}
+    .kicker{display:flex;align-items:center;gap:10px;color:#71809c;font-size:9px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;margin:0 0 27px}
+    .kicker:before{content:"";width:25px;height:3px;border-radius:5px;background:var(--blue)}
+    h1{font-size:clamp(58px,7vw,94px);line-height:.99;letter-spacing:-.085em;margin:0;color:var(--navy);font-weight:800}
+    h1 span{color:var(--blue)}
+    .role{font-size:15px;font-weight:800;color:#34415f;margin:26px 0 12px;letter-spacing:-.02em}
+    .intro{max-width:520px;color:var(--muted);font-size:13px;line-height:2}
+    .actions{display:flex;align-items:center;gap:23px;margin-top:30px;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:25px;padding:14px 19px;border-radius:10px;background:var(--navy);color:white;text-decoration:none;font-size:11px;font-weight:800;box-shadow:0 9px 22px rgba(16,29,58,.15);transition:.22s}
+    .btn:hover{transform:translateY(-3px);background:var(--blue);box-shadow:0 14px 28px rgba(71,123,219,.22)}
+    .btn span{font-size:17px;line-height:1}
+    .secondary{font-size:11px;font-weight:800;text-decoration:none;color:var(--navy);border-bottom:1px solid #aab8d1;padding:0 0 5px}
+    .secondary:hover{color:var(--blue);border-color:var(--blue)}
+    .meta{display:flex;align-items:center;gap:10px;margin-top:54px;color:#8b96aa;font-size:9px;font-weight:800;letter-spacing:.13em}
+    .status{width:7px;height:7px;border-radius:50%;background:#78bd71;box-shadow:0 0 0 4px #78bd7120}
+    .hero-art{max-width:465px;width:100%;justify-self:end}
+    .art-card{height:485px;border-radius:28px;background:linear-gradient(145deg,#17294e 0%,#203d70 56%,#477bdb 100%);padding:25px;position:relative;overflow:hidden;box-shadow:0 28px 70px rgba(16,29,58,.2)}
+    .art-card:before,.art-card:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.13);border-radius:50%}
+    .art-card:before{width:430px;height:430px;right:-175px;top:-130px}
+    .art-card:after{width:330px;height:330px;right:-120px;top:-80px}
+    .card-top{display:flex;justify-content:space-between;align-items:center;color:#c8d7f2;font-size:9px;font-weight:800;letter-spacing:.16em;position:relative;z-index:1}
+    .card-top span:last-child{color:var(--lime)}
+    .portrait-wrap{position:absolute;inset:75px 30px 58px;display:flex;align-items:center;justify-content:center}
+    .portrait-shape{width:270px;height:310px;border-radius:48% 48% 24px 24px;background:linear-gradient(155deg,#dce8fa,#9fb7df 60%,#7897cb);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .portrait-shape:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.28);top:28px;left:50%;transform:translateX(-50%)}
+    .portrait-initial{font-size:170px;font-weight:800;line-height:1;color:rgba(255,255,255,.78);letter-spacing:-.12em;transform:translateX(-10px);z-index:1}
+    .portrait-hint{position:absolute;bottom:18px;left:0;right:0;text-align:center;color:#eff5ff;font-size:8px;font-weight:800;letter-spacing:.18em;z-index:2}
+    .card-bottom{position:absolute;bottom:23px;left:26px;right:26px;display:flex;justify-content:space-between;color:#d9e5fa;font-size:9px;letter-spacing:.1em;font-weight:700}
+    .floating{position:absolute;left:-48px;bottom:75px;background:white;border:1px solid #edf1f7;border-radius:14px;padding:14px 17px;box-shadow:0 14px 35px rgba(16,29,58,.13);display:flex;align-items:center;gap:11px;font-size:10px;font-weight:800;color:var(--navy)}
+    .floating-icon{width:31px;height:31px;border-radius:9px;background:var(--blue-light);display:grid;place-items:center;color:var(--blue);font-size:15px}
+    .side-index{position:absolute;right:-42px;top:24px;color:#9aa6bb;font-size:9px;font-weight:800;letter-spacing:.16em;line-height:1.8}
+    .quickbar{margin:0 7.2% 60px;padding:23px 28px;background:white;border:1px solid var(--line);border-radius:15px;display:grid;grid-template-columns:repeat(3,1fr);box-shadow:0 10px 30px rgba(16,29,58,.035)}
+    .quick-item{padding:3px 25px;border-right:1px solid var(--line)}
+    .quick-item:last-child{border:0}
+    .quick-label{font-size:8px;font-weight:800;letter-spacing:.16em;color:#91a0b9;text-transform:uppercase}
+    .quick-value{font-size:13px;font-weight:800;color:var(--navy);margin-top:4px}
+    .bottom-note{padding:0 7.2% 40px;display:flex;align-items:center;justify-content:space-between;color:#99a3b5;font-size:9px;font-weight:700;letter-spacing:.12em}
+    .bottom-note strong{color:#71809c}
+    .site-footer{background:var(--footer-bg);color:var(--footer-text);padding:23px 7.2% 12px;margin-top:6px}
+    .footer-main{display:grid;grid-template-columns:1.45fr .7fr .8fr 1fr;gap:42px;padding-bottom:42px}
+    .footer-main-compact{grid-template-columns:1.5fr 1fr 1fr;gap:22px;padding-bottom:14px}
+    .footer-contact a{color:var(--footer-text);text-decoration:none}
+    .footer-contact a:hover{color:#8fb4ff}
+    .footer-location span{color:var(--footer-text);font-size:14px}
+    
+    .footer-brand{color:#fff!important}
+    .footer-brand .brand-mark{background:#477bdb}
+    .footer-about p{max-width:320px;color:var(--footer-muted);font-size:13px;line-height:1.5;margin:8px 0 0}
+    .footer-links{display:flex;flex-direction:column;gap:5px}
+    .footer-links h3{font-size:11px;letter-spacing:.11em;color:#8ea5cb;margin:2px 0 4px}
+    .footer-links a{width:max-content;text-decoration:none;color:var(--footer-text);font-size:14px;transition:color .2s,transform .2s}
+    .footer-links a:hover{color:#8fb4ff;transform:translateX(3px)}
+    .footer-note{border-left:1px solid #ffffff24;padding-left:25px;align-self:center}
+    .footer-orbit{display:grid;place-items:center;width:35px;height:35px;border-radius:11px;background:#477bdb24;color:#a9c5ff;font-size:18px}
+    .footer-note p{font-size:12px;font-weight:700;line-height:1.8;color:#dce6f7;max-width:190px}
+    .footer-bottom{border-top:1px solid #ffffff20;padding-top:9px;display:flex;align-items:center;justify-content:space-between;gap:12px;color:var(--footer-muted);font-size:10px;font-weight:700;letter-spacing:.04em}
+    .footer-bottom strong{color:#fff}
+
+
+    /* ABOUT PAGE — editorial layout */
+    .about-hero{padding:76px 7.2% 54px;position:relative;overflow:hidden}
+    .about-hero:before{content:"";position:absolute;width:520px;height:520px;right:-180px;top:-210px;border-radius:50%;background:radial-gradient(circle,rgba(91,132,222,.18),transparent 68%);pointer-events:none}
+    .about-topline{display:flex;align-items:center;gap:12px;margin-bottom:25px;position:relative;z-index:1}
+    .about-topline:before{content:"";width:30px;height:1px;background:var(--blue)}
+    .about-topline span{font-size:9px;letter-spacing:.2em;font-weight:800;color:var(--blue)}
+    .about-hero-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:7%;align-items:end;position:relative;z-index:1}
+    .about-head h1{font-size:clamp(54px,7.3vw,92px);line-height:.98;letter-spacing:-.085em;margin:0 0 25px;color:var(--ink)}
+    .about-head h1 span{color:var(--blue)}
+    .about-lead{font-size:18px;line-height:1.9;color:var(--ink);max-width:600px;margin:0}
+    .about-hero-note{padding:27px 27px 26px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);position:relative}
+    .about-hero-note .note-mark{font-size:34px;line-height:1;color:var(--blue);font-family:Georgia,serif}
+    .about-hero-note p{font-size:20px;line-height:1.65;letter-spacing:-.035em;font-weight:700;color:var(--ink);margin:13px 0 16px}
+    .about-hero-note small{font-size:11px;letter-spacing:.16em;color:var(--ink);font-weight:800}
+    .about-body{padding:25px 7.2% 75px}
+    .about-intro-strip{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:0 0 23px;margin-bottom:28px;border-bottom:1px solid var(--line)}
+    .about-intro-strip h2{font-size:22px;letter-spacing:-.05em;margin:0;color:var(--ink)}
+    .about-intro-strip span{font-size:11px;letter-spacing:.15em;color:var(--ink);font-weight:800}
+    .about-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .about-card{padding:28px 29px 30px;border:1px solid var(--line);border-radius:17px;background:rgba(255,255,255,.86);min-height:230px;position:relative;overflow:hidden}
+    .about-card.featured{background:linear-gradient(145deg,#182d52,#294d83);border-color:transparent;color:#fff}
+    .about-card.featured .section-index{color:#c7d8ff}
+    .about-card.featured h2,.about-card.featured p{color:#fff}
+    .about-card.featured p{color:#d8e2f4}
+    .section-index{font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--blue);margin:0 0 17px}
+    .about-card h2{font-size:23px;letter-spacing:-.05em;color:var(--ink);margin:0 0 13px}
+    .about-card p{font-size:15px;line-height:1.9;color:var(--ink);margin:0 0 10px}
+    .interest-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:18px}
+    .interest-card{border:1px solid #d9e3f2;border-radius:11px;padding:14px 14px;background:#f4f7fc}
+    .interest-card strong{display:block;font-size:13px;color:var(--ink);margin-bottom:4px}
+    .interest-card span{font-size:12px;line-height:1.7;color:var(--ink)}
+    .about-card.featured .interest-card{background:#ffffff12;border-color:#ffffff26}
+    .about-card.featured .interest-card strong{color:#fff}
+    .about-card.featured .interest-card span{color:#d8e2f4}
+    .principle{padding:14px 16px;border-left:2px solid #c5f36a;background:#ffffff12;border-radius:0 10px 10px 0;color:#fff;font-size:12px;font-weight:700;line-height:1.8;margin-top:18px}
+    .about-end{padding:0 7.2% 70px}
+    .about-end-inner{border-radius:18px;padding:27px 30px;background:var(--blue-light);display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .about-end h2{font-size:23px;letter-spacing:-.04em;margin:0 0 5px;color:var(--ink)}
+    .about-end p{font-size:14px;color:var(--ink);margin:0;line-height:1.8}
+    .about-end a{flex-shrink:0;text-decoration:none;background:var(--navy);color:#fff;border-radius:9px;padding:12px 17px;font-size:11px;font-weight:800}
+    [data-theme="dark"] .about-end-inner{background:#1c3155}
+    [data-theme="dark"] .about-end a{background:#477bdb}
+    @media(max-width:850px){.about-hero-grid{grid-template-columns:1fr;gap:28px}.about-hero-note{max-width:550px}.about-card{min-height:0}}
+    @media(max-width:650px){.about-hero{padding:55px 7% 35px}.about-head h1{font-size:58px}.about-lead{font-size:13px}.about-body{padding:18px 7% 52px}.about-intro-strip{align-items:flex-start;flex-direction:column;gap:8px}.about-grid{grid-template-columns:1fr;gap:12px}.about-card{padding:22px}.about-end{padding:0 7% 48px}.about-end-inner{padding:22px;align-items:flex-start;flex-direction:column}.about-end a{width:100%;text-align:center}}
+    @media(max-width:390px){.interest-grid{grid-template-columns:1fr}}
+
+
+    /* Readability refinements */
+    body{color:#17233d}
+    .about-lead{max-width:650px}
+    .about-card h2{font-size:26px}
+    .about-card p{color:#3d4b63}
+    .about-hero-note p{color:#17233d}
+    .about-hero-note small{color:#53627b}
+    .about-card.featured p{color:#f0f4fc}
+    .about-card.featured .interest-card{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.25)}
+    .about-card.featured .interest-card strong{color:#fff}
+    .about-card.featured .interest-card span{color:#edf3ff}
+    .about-end-inner{background:linear-gradient(105deg,#e8f0ff,#f0edff)}
+    [data-theme="dark"] .about-card:not(.featured){background:#202f49}
+    [data-theme="dark"] .about-card:not(.featured) h2,
+    [data-theme="dark"] .about-card:not(.featured) p,
+    [data-theme="dark"] .about-card:not(.featured) .interest-card strong,
+    [data-theme="dark"] .about-card:not(.featured) .interest-card span,
+    [data-theme="dark"] .about-hero-note p,
+    [data-theme="dark"] .about-hero-note small{color:#edf3ff}
+    [data-theme="dark"] .about-hero-note{background:#202f49}
+    [data-theme="dark"] .interest-card{background:#293a57;border-color:#405372}
+    [data-theme="dark"] .about-end-inner{background:#243a60}
+    @media(max-width:650px){
+      .about-lead{font-size:16px}
+      .about-card p{font-size:14px}
+      .interest-card span{font-size:12px}
+      .about-card h2{font-size:24px}
+    }
+
+    @media(max-width:900px){.header{padding:0 5%}.nav{gap:17px}.hero{padding-left:7%;padding-right:7%;gap:4%}.art-card{height:420px}.portrait-wrap{inset:70px 20px 55px}.portrait-shape{width:235px;height:285px}.quickbar{margin-left:7%;margin-right:7%}.footer-main{grid-template-columns:1.2fr 1fr 1fr;gap:25px}.footer-main-compact{grid-template-columns:1.4fr 1fr 1fr;gap:22px}.footer-note{grid-column:1/-1;border-left:0;border-top:1px solid #ffffff24;padding:20px 0 0;display:flex;align-items:center;gap:15px}.footer-note p{max-width:none;margin:0}}
+    @media(max-width:650px){
+      .header{height:70px;padding:0 5%}.menu{display:block;order:3}.header-right{margin-left:auto;margin-right:12px;gap:7px}.theme-toggle{width:33px;height:33px}
+      .nav{display:none;position:absolute;top:70px;left:0;right:0;background:rgba(245,247,251,.98);padding:22px 7%;border-bottom:1px solid var(--line);box-shadow:0 15px 25px #101d3a0c;flex-direction:column;align-items:flex-start;gap:18px}
+      .nav.open{display:flex}.nav a.active:after{display:none}
+      .hero{grid-template-columns:1fr;padding:62px 7% 75px;gap:50px}
+      h1{font-size:66px}.intro{font-size:12px}.meta{margin-top:35px}
+      .hero-art{width:84%;justify-self:center;margin-right:3%}.art-card{height:370px;border-radius:22px;padding:19px}
+      .portrait-wrap{inset:65px 18px 48px}.portrait-shape{width:210px;height:245px}.portrait-initial{font-size:140px}
+      .floating{left:-32px;bottom:54px;padding:11px 13px}.side-index{right:-28px}
+      .quickbar{margin:0 7% 42px;padding:15px 8px;grid-template-columns:1fr;gap:0}
+      .quick-item{padding:12px 15px;border-right:0;border-bottom:1px solid var(--line)}.quick-item:last-child{border:0}
+      .site-footer{padding:20px 7% 12px}.footer-main{grid-template-columns:1fr 1fr;gap:14px 14px}.footer-main-compact{grid-template-columns:1fr 1fr}.footer-about{grid-column:1/-1}.footer-note{grid-column:1/-1}.footer-bottom{align-items:flex-start;flex-direction:column;gap:8px;line-height:1.8}
+    }
+    @media(prefers-reduced-motion:no-preference){.hero-copy{animation:fadeUp .7s ease both}.hero-art{animation:fadeUp .8s .12s ease both}@keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}}
+  
+/* Subtle motion details */
+@keyframes kara-float {
+  0%, 100% { transform: translate3d(0,0,0); }
+  50% { transform: translate3d(0,-10px,0); }
+}
+@keyframes kara-glow {
+  0%, 100% { opacity: .48; transform: scale(1); }
+  50% { opacity: .78; transform: scale(1.08); }
+}
+@keyframes kara-rise {
+  from { opacity: 0; transform: translateY(22px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.about-hero { animation: kara-rise .8s cubic-bezier(.2,.7,.2,1) both; }
+.about-hero::after {
+  content: "";
+  position: absolute;
+  width: 220px; height: 220px;
+  right: 3%; top: 8%;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(125,151,255,.20), rgba(164,139,255,.08) 45%, transparent 72%);
+  filter: blur(5px);
+  animation: kara-glow 7s ease-in-out infinite;
+}
+.about-card, .about-end-inner {
+  transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+}
+.about-card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 18px 42px rgba(35,65,130,.13);
+}
+.about-card:nth-child(even) { transition-delay: .035s; }
+.about-end-inner:hover { transform: translateY(-3px); }
+.about-end a { transition: gap .2s ease, color .2s ease; }
+.about-end a:hover { gap: 12px; }
+.brand-mark { transition: transform .3s ease; }
+.brand:hover .brand-mark { transform: rotate(-9deg) scale(1.08); }
+.reveal-ready .reveal {
+  opacity:  0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1);
+}
+.reveal-ready .reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-ready .about-card.reveal:nth-child(2) { transition-delay: .08s; }
+.reveal-ready .about-card.reveal:nth-child(3) { transition-delay: .16s; }
+.reveal-ready .about-card.reveal:nth-child(4) { transition-delay: .24s; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal-ready .reveal { opacity: 1; transform: none; }
+}
+
+
+/* Journey page */
+.journey-hero{padding:76px 7.2% 58px;position:relative;overflow:hidden}
+.journey-hero:after{content:"";position:absolute;width:330px;height:330px;right:8%;top:10px;border-radius:50%;background:radial-gradient(circle,rgba(100,143,255,.2),rgba(165,143,255,.08) 48%,transparent 72%);animation:kara-glow 7s ease-in-out infinite;pointer-events:none}
+.journey-hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:7%;align-items:center;position:relative;z-index:1}
+.journey-hero h1{font-size:clamp(52px,7.1vw,88px);line-height:1.02;letter-spacing:-.08em;margin:0 0 22px;color:var(--ink)}
+.journey-hero h1 span{color:var(--blue)}
+.journey-hero p{font-size:17px;line-height:1.9;max-width:660px;color:var(--muted);margin:0}
+.journey-highlight{padding:28px 30px;border:1px solid var(--line);border-radius:20px;background:var(--surface-glass);box-shadow:0 18px 48px var(--soft-shadow);backdrop-filter:blur(12px);display:flex;flex-direction:column;gap:9px;animation:kara-float 7s ease-in-out infinite}
+.highlight-kicker,.section-index{font-size:11px;font-weight:800;letter-spacing:.17em;color:var(--blue)}
+.journey-highlight strong{font-size:76px;line-height:1;letter-spacing:-.08em;color:var(--blue)}
+.journey-highlight b{font-size:19px;color:var(--ink)}
+.journey-highlight small{font-size:13px;color:var(--muted)}
+.journey-section{padding:22px 7.2% 70px}
+.journey-section-heading{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:38px}
+.journey-section-heading h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.06em;margin:8px 0 0;color:var(--ink)}
+.journey-section-heading p{max-width:350px;color:var(--muted);font-size:14px;line-height:1.8;margin:0}
+.timeline{max-width:930px;margin:0 auto;position:relative}
+.timeline:before{content:"";position:absolute;left:154px;top:10px;bottom:18px;width:2px;background:linear-gradient(var(--blue),rgba(71,123,219,.12))}
+.timeline-item{display:grid;grid-template-columns:125px 24px minmax(0,1fr);gap:18px;position:relative;padding-bottom:28px}
+.timeline-year{text-align:right;padding-top:24px;display:flex;flex-direction:column;color:var(--muted);font-size:12px;letter-spacing:.08em}
+.timeline-year b{font-size:19px;color:var(--ink);letter-spacing:-.04em}
+.timeline-dot{width:13px;height:13px;border-radius:50%;background:var(--blue);border:3px solid var(--bg);box-shadow:0 0 0 3px rgba(71,123,219,.2);margin:29px auto 0;z-index:1}
+.timeline-card{padding:25px 28px 27px;border:1px solid var(--line);border-radius:17px;background:var(--surface-glass);box-shadow:0 12px 34px var(--soft-shadow);transition:transform .28s ease,box-shadow .28s ease}
+.timeline-card:hover{transform:translateY(-5px);box-shadow:0 18px 42px rgba(35,65,130,.13)}
+.timeline-tag{font-size:10px;letter-spacing:.16em;font-weight:800;color:var(--blue)}
+.timeline-card h3{font-size:23px;letter-spacing:-.045em;margin:8px 0 9px;color:var(--ink)}
+.timeline-card p{font-size:15px;line-height:1.85;color:var(--muted);margin:0}
+.timeline-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:17px}
+.timeline-meta span,.project-tech span{font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-light);padding:7px 10px;border-radius:7px}
+.project-link{display:inline-block;margin-top:17px;color:var(--blue);font-size:13px;font-weight:800;text-decoration:none}
+.award-card{border-color:rgba(71,123,219,.35);background:linear-gradient(145deg,rgba(234,241,255,.92),rgba(255,255,255,.9))}
+[data-theme="dark"] .award-card{background:linear-gradient(145deg,#1a3157,#172642)}
+.award-facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px;padding-top:17px;border-top:1px solid var(--line)}
+.award-facts div{display:flex;flex-direction:column;gap:2px}
+.award-facts strong{font-size:25px;letter-spacing:-.05em;color:var(--blue)}
+.award-facts span,.source-note{font-size:11px;color:var(--muted)}
+.source-note{display:block;margin-top:12px}
+.journey-project{margin:0 7.2% 65px;border-radius:22px;overflow:hidden;display:grid;grid-template-columns:1.2fr .8fr;background:linear-gradient(125deg,#14294d,#315b9b);color:white;box-shadow:0 20px 50px rgba(23,49,91,.18)}
+.project-copy{padding:38px 40px}
+.project-copy .section-index{color:#c9d9ff}
+.project-copy h2{font-size:43px;letter-spacing:-.07em;margin:8px 0 12px}
+.project-copy h2 span{color:#b8d0ff}
+.project-copy p{font-size:15px;line-height:1.85;color:#e0e9f8;max-width:560px}
+.project-copy a{display:inline-block;margin-top:10px;padding:11px 16px;border-radius:8px;background:white;color:#17345f;text-decoration:none;font-size:12px;font-weight:800}
+.project-side{padding:34px;display:flex;flex-direction:column;justify-content:center;gap:20px;background:rgba(255,255,255,.06)}
+.project-number{font-size:82px;font-weight:800;letter-spacing:-.09em;color:rgba(255,255,255,.22);line-height:1}
+.project-tech{display:flex;flex-wrap:wrap;gap:8px}
+.project-tech span{background:rgba(255,255,255,.13);color:#fff}
+.project-side small{color:#d2def1;line-height:1.6}
+.journey-end{text-align:center;padding:10px 7.2% 78px}
+.journey-end h2{font-size:clamp(28px,4vw,42px);letter-spacing:-.06em;margin:10px 0;color:var(--ink)}
+.journey-end p{max-width:610px;margin:0 auto 20px;color:var(--muted);font-size:15px;line-height:1.85}
+.journey-end a{display:inline-block;text-decoration:none;background:var(--navy);color:white;padding:12px 18px;border-radius:9px;font-size:12px;font-weight:800}
+[data-theme="dark"] .journey-end a{background:#477bdb}
+@media(max-width:850px){.journey-hero-grid,.journey-project{grid-template-columns:1fr}.journey-highlight{max-width:460px}.project-side{padding:25px 40px}.journey-section-heading{align-items:start;flex-direction:column;gap:12px}}
+@media(max-width:650px){.journey-hero{padding:55px 7% 38px}.journey-hero h1{font-size:57px}.journey-hero p{font-size:15px}.journey-section{padding:15px 7% 50px}.timeline:before{left:8px}.timeline-item{grid-template-columns:18px minmax(0,1fr);gap:14px}.timeline-year{grid-column:2;grid-row:1;text-align:left;padding:0;display:block;margin:0 0 -8px}.timeline-year span{margin-right:8px}.timeline-dot{grid-column:1;grid-row:1;margin:5px auto 0}.timeline-card{grid-column:2;grid-row:2;padding:21px}.timeline-card h3{font-size:20px}.award-facts strong{font-size:21px}.award-facts span{font-size:10px}.journey-project{margin:0 7% 50px}.project-copy{padding:29px 25px}.project-copy h2{font-size:36px}.project-side{padding:22px 25px}.journey-end{padding-bottom:60px}}
+
+
+/* Skills page */
+.skills-hero{padding:76px 7.2% 60px;position:relative;overflow:hidden}
+.skills-hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:7%;align-items:center;position:relative;z-index:1}
+.skills-hero h1{font-size:clamp(50px,7vw,86px);line-height:1.02;letter-spacing:-.08em;margin:0 0 22px;color:var(--ink)}
+.skills-hero h1 span{color:var(--blue)}
+.skills-hero p{font-size:17px;line-height:1.9;max-width:650px;color:var(--muted);margin:0}
+.skills-hero-card{padding:29px 31px;border-radius:20px;background:linear-gradient(145deg,#172d53,#315b98);color:#fff;box-shadow:0 20px 48px rgba(23,49,91,.18);display:flex;flex-direction:column;gap:15px;animation:kara-float 7s ease-in-out infinite}
+.skills-hero-card>span,.featured-label{font-size:10px;letter-spacing:.18em;font-weight:800;color:#c8d9ff}
+.skills-hero-card strong{font-size:clamp(32px,4vw,47px);line-height:1.17;letter-spacing:-.06em}
+.skills-hero-card strong i{font-style:normal;color:#b9d0ff}
+.skills-hero-card small{font-size:12px;color:#dce7f8}
+.skills-content{padding:15px 7.2% 70px}
+.skills-heading{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:27px}
+.skills-heading h2{font-size:clamp(27px,3.8vw,39px);letter-spacing:-.06em;margin:8px 0 0;color:var(--ink)}
+.skills-heading p{max-width:370px;color:var(--muted);font-size:14px;line-height:1.8;margin:0}
+.skills-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.skill-card{border:1px solid var(--line);border-radius:18px;padding:25px 27px 27px;background:var(--surface-glass);box-shadow:0 12px 32px var(--soft-shadow);transition:transform .28s ease,box-shadow .28s ease;min-height:225px}
+.skill-card:hover{transform:translateY(-6px);box-shadow:0 18px 42px rgba(35,65,130,.13)}
+.skill-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+.skill-icon{font-size:12px;font-weight:800;letter-spacing:.1em;color:var(--blue);background:var(--blue-light);padding:8px 10px;border-radius:8px}
+.skill-status{font-size:9px;font-weight:800;letter-spacing:.13em;color:var(--muted)}
+.skill-card h3{font-size:22px;letter-spacing:-.045em;color:var(--ink);margin:0 0 10px}
+.skill-card p{font-size:14px;line-height:1.85;color:var(--muted);margin:0}
+.skill-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.skill-tags span{font-size:10px;font-weight:700;padding:6px 9px;border-radius:6px;background:var(--blue-light);color:var(--blue)}
+.skill-card-featured{background:linear-gradient(145deg,#172d53,#315b98);border-color:transparent;color:white;display:flex;flex-direction:column;justify-content:center}
+.skill-card-featured strong{font-size:37px;letter-spacing:-.06em;margin:8px 0}
+.skill-card-featured p{color:#e0e9f8}
+.skill-card-featured a{align-self:flex-start;color:#fff;font-size:12px;font-weight:800;text-decoration:none;margin-top:17px;border-bottom:1px solid rgba(255,255,255,.55);padding-bottom:4px}
+.skills-note{margin:0 7.2% 75px;padding:34px 38px;border-radius:20px;background:var(--blue-light);text-align:center}
+.skills-note h2{max-width:780px;margin:12px auto;font-size:clamp(25px,3.4vw,36px);line-height:1.35;letter-spacing:-.05em;color:var(--ink)}
+.skills-note p{max-width:650px;margin:0 auto;color:var(--muted);font-size:14px;line-height:1.8}
+@media(max-width:850px){.skills-hero-grid{grid-template-columns:1fr;gap:28px}.skills-hero-card{max-width:480px}.skills-heading{align-items:start;flex-direction:column;gap:12px}}
+@media(max-width:650px){.skills-hero{padding:55px 7% 38px}.skills-hero h1{font-size:54px}.skills-hero p{font-size:15px}.skills-content{padding:10px 7% 50px}.skills-grid{grid-template-columns:1fr}.skill-card{min-height:0;padding:22px}.skills-note{margin:0 7% 55px;padding:27px 22px}}
+
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="header">
+    <a class="brand" href="index.html" aria-label="Kara home"><span class="brand-mark">K.</span><span>KARA<span class="brand-dot">.</span></span></a>
+    <nav class="nav" id="nav">
+      <a href="index.html" data-vi="Trang chủ" data-en="Home">Trang chủ</a>
+      <a class="active" href="about.html" data-vi="Giới thiệu" data-en="About">Giới thiệu</a>
+      <a href="journey.html" data-vi="Hành trình" data-en="Journey">Hành trình</a>
+      <a href="skills.html" class="active" data-vi="Kỹ năng" data-en="Skills">Kỹ năng</a>
+      <a href="projects.html" data-vi="Dự án" data-en="Projects">Dự án</a>
+      <a href="contact.html" data-vi="Liên hệ" data-en="Contact">Liên hệ</a>
+    </nav>
+    <div class="header-right">
+      <button class="theme-toggle" id="themeBtn" type="button" aria-label="Chuyển sang giao diện tối" title="Chuyển sáng / tối">☾</button>
+      <button class="lang" id="langBtn"><b>VI</b> / EN</button>
+    </div>
+    <button class="menu" id="menuBtn" aria-label="Mở menu" aria-expanded="false"><span></span><span></span></button>
+  </header>
+
+
+
+  <main>
+  <section class="skills-hero">
+    <div class="about-topline"><span data-vi="KỸ NĂNG & NĂNG LỰC" data-en="SKILLS & CAPABILITIES">KỸ NĂNG & NĂNG LỰC</span></div>
+    <div class="skills-hero-grid">
+      <div>
+        <h1 data-vi="Đang học hỏi.<br><span>Đang phát triển.</span>" data-en="Always learning.<br><span>Always growing.</span>">Đang học hỏi.<br><span>Đang phát triển.</span></h1>
+        <p data-vi="Mình xem kỹ năng là một quá trình được xây dựng qua việc học, thực hành và trải nghiệm. Đây là những lĩnh vực mình đang tập trung phát triển — cùng những gì đã có cơ hội áp dụng vào thực tế."
+           data-en="I see skills as something built through learning, practice and experience. These are the areas I’m actively developing, along with the skills I’ve had opportunities to apply in practice.">
+          Mình xem kỹ năng là một quá trình được xây dựng qua việc học, thực hành và trải nghiệm. Đây là những lĩnh vực mình đang tập trung phát triển — cùng những gì đã có cơ hội áp dụng vào thực tế.
+        </p>
+      </div>
+      <div class="skills-hero-card">
+        <span>MY APPROACH</span>
+        <strong>Learn<br><i>→</i> Apply<br><i>→</i> Improve</strong>
+        <small data-vi="Học có mục tiêu · Thực hành có định hướng" data-en="Purposeful learning · Intentional practice">Học có mục tiêu · Thực hành có định hướng</small>
+      </div>
+    </div>
+  </section>
+
+  <section class="skills-content">
+    <div class="skills-heading">
+      <div><span class="section-index">CORE AREAS</span><h2 data-vi="Những lĩnh vực mình đang phát triển" data-en="Areas I’m developing">Những lĩnh vực mình đang phát triển</h2></div>
+      <p data-vi="Không phải tất cả đều ở cùng một mức độ. Mình ưu tiên học chắc nền tảng và tích lũy trải nghiệm qua từng dự án."
+         data-en="Not every area is at the same level. I focus on building solid foundations and gaining experience through projects.">Không phải tất cả đều ở cùng một mức độ. Mình ưu tiên học chắc nền tảng và tích lũy trải nghiệm qua từng dự án.</p>
+    </div>
+
+    <div class="skills-grid">
+      <article class="skill-card reveal">
+        <div class="skill-card-top"><span class="skill-icon">01</span><span class="skill-status" data-vi="ĐANG HỌC" data-en="LEARNING">ĐANG HỌC</span></div>
+        <h3 data-vi="Tài chính & Ngân hàng" data-en="Finance & Banking">Tài chính & Ngân hàng</h3>
+        <p data-vi="Xây dựng nền tảng kiến thức về tài chính, tiền tệ, ngân hàng và các nguyên lý kinh tế thông qua chương trình đại học."
+           data-en="Building foundational knowledge in finance, money, banking and economic principles through university studies.">Xây dựng nền tảng kiến thức về tài chính, tiền tệ, ngân hàng và các nguyên lý kinh tế thông qua chương trình đại học.</p>
+        <div class="skill-tags"><span>Financial Theory</span><span>Banking</span><span>Economics</span></div>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-card-top"><span class="skill-icon">02</span><span class="skill-status" data-vi="ĐANG CẢI THIỆN" data-en="IN PROGRESS">ĐANG CẢI THIỆN</span></div>
+        <h3 data-vi="Tiếng Anh" data-en="English">Tiếng Anh</h3>
+        <p data-vi="Tập trung phát triển đồng đều bốn kỹ năng, củng cố ngữ pháp và mở rộng vốn từ để phục vụ học tập, giao tiếp và mục tiêu IELTS."
+           data-en="Developing all four skills, strengthening grammar and expanding vocabulary for academic learning, communication and an IELTS goal.">Tập trung phát triển đồng đều bốn kỹ năng, củng cố ngữ pháp và mở rộng vốn từ để phục vụ học tập, giao tiếp và mục tiêu IELTS.</p>
+        <div class="skill-tags"><span>Reading</span><span>Listening</span><span>Speaking</span><span>Writing</span></div>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-card-top"><span class="skill-icon">03</span><span class="skill-status" data-vi="ĐÃ THỰC HÀNH" data-en="HANDS-ON">ĐÃ THỰC HÀNH</span></div>
+        <h3 data-vi="Công nghệ & Phát triển web" data-en="Technology & Web Development">Công nghệ & Phát triển web</h3>
+        <p data-vi="Có trải nghiệm trực tiếp xây dựng website Study Lab, từ giao diện đến các chức năng tương tác và mô phỏng học tập."
+           data-en="Hands-on experience building the Study Lab website, from its interface to interactive features and learning simulations.">Có trải nghiệm trực tiếp xây dựng website Study Lab, từ giao diện đến các chức năng tương tác và mô phỏng học tập.</p>
+        <div class="skill-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>Canvas API</span></div>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-card-top"><span class="skill-icon">04</span><span class="skill-status" data-vi="QUA DỰ ÁN" data-en="PROJECT EXPERIENCE">QUA DỰ ÁN</span></div>
+        <h3 data-vi="Nghiên cứu & Giải quyết vấn đề" data-en="Research & Problem Solving">Nghiên cứu & Giải quyết vấn đề</h3>
+        <p data-vi="Từng tham gia phát triển dự án nghiên cứu khoa học, tìm hiểu nhu cầu người dùng, xây dựng sản phẩm và trình bày kết quả."
+           data-en="Participated in a science research project involving user needs, product development and presenting project outcomes.">Từng tham gia phát triển dự án nghiên cứu khoa học, tìm hiểu nhu cầu người dùng, xây dựng sản phẩm và trình bày kết quả.</p>
+        <div class="skill-tags"><span>Research</span><span>Analysis</span><span>Project Development</span></div>
+      </article>
+
+      <article class="skill-card reveal">
+        <div class="skill-card-top"><span class="skill-icon">05</span><span class="skill-status" data-vi="ĐANG RÈN LUYỆN" data-en="DEVELOPING">ĐANG RÈN LUYỆN</span></div>
+        <h3 data-vi="Giao tiếp & Trình bày" data-en="Communication & Presentation">Giao tiếp & Trình bày</h3>
+        <p data-vi="Rèn luyện khả năng diễn đạt ý tưởng, trình bày nội dung học thuật và phối hợp trong quá trình thực hiện công việc, dự án."
+           data-en="Practicing how to communicate ideas, present academic content and collaborate while working on tasks and projects.">Rèn luyện khả năng diễn đạt ý tưởng, trình bày nội dung học thuật và phối hợp trong quá trình thực hiện công việc, dự án.</p>
+        <div class="skill-tags"><span>Presentation</span><span>Teamwork</span><span>Content</span></div>
+      </article>
+
+      <article class="skill-card skill-card-featured reveal">
+        <span class="featured-label" data-vi="MINH CHỨNG THỰC TẾ" data-en="PRACTICAL EVIDENCE">MINH CHỨNG THỰC TẾ</span>
+        <strong>Study Lab</strong>
+        <p data-vi="Dự án website do mình tạo chính và trực tiếp phát triển, đạt Giải Nhất cuộc thi KHKT cấp thành phố năm học 2025–2026."
+           data-en="A website project I initiated and directly developed, awarded First Prize at the city-level Science & Technology Competition for the 2025–2026 academic year.">Dự án website do mình tạo chính và trực tiếp phát triển, đạt Giải Nhất cuộc thi KHKT cấp thành phố năm học 2025–2026.</p>
+        <a href="https://study-lab-six.vercel.app/" target="_blank" rel="noopener" data-vi="Xem dự án ↗" data-en="View project ↗">Xem dự án ↗</a>
+      </article>
+    </div>
+  </section>
+
+  <section class="skills-note">
+    <span class="section-index" data-vi="ĐIỀU MÌNH TIN" data-en="MY MINDSET">ĐIỀU MÌNH TIN</span>
+    <h2 data-vi="Kỹ năng không chỉ nằm ở những gì mình biết, mà còn ở cách mình tiếp tục học." data-en="Skills are not only about what I know, but also how I keep learning.">Kỹ năng không chỉ nằm ở những gì mình biết, mà còn ở cách mình tiếp tục học.</h2>
+    <p data-vi="Mình muốn tiếp tục thử sức với những lĩnh vực mới, biến kiến thức thành sản phẩm và tích lũy trải nghiệm có ý nghĩa."
+       data-en="I want to keep exploring new fields, turn knowledge into things I can build and gain meaningful experience.">Mình muốn tiếp tục thử sức với những lĩnh vực mới, biến kiến thức thành sản phẩm và tích lũy trải nghiệm có ý nghĩa.</p>
+  </section>
+</main>
+
+
+
+  <footer class="site-footer">
+    <div class="footer-main footer-main-compact">
+      <div class="footer-about">
+        <a class="brand footer-brand" href="index.html"><span class="brand-mark">K.</span><span>KARA<span class="brand-dot">.</span></span></a>
+        <p data-vi="Ghi lại hành trình học tập, dự án và những điều mình quan tâm." data-en="A space for my learning journey, projects and interests.">Ghi lại hành trình học tập, dự án và những điều mình quan tâm.</p>
+      </div>
+      <div class="footer-links footer-contact">
+        <h3 data-vi="LIÊN HỆ" data-en="CONTACT">LIÊN HỆ</h3>
+        <a href="mailto:voyen0328@gmail.com">voyen0328@gmail.com</a>
+      </div>
+      <div class="footer-links footer-location">
+        <h3 data-vi="ĐỊA ĐIỂM" data-en="BASED IN">ĐỊA ĐIỂM</h3>
+        <span data-vi="Cần Thơ, Việt Nam" data-en="Can Tho, Vietnam">Cần Thơ, Việt Nam</span>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <strong>KARA.</strong> <span data-vi="MỌI QUYỀN ĐƯỢC BẢO LƯU." data-en="ALL RIGHTS RESERVED.">MỌI QUYỀN ĐƯỢC BẢO LƯU.</span></span>
+      <span data-vi="Được xây dựng bằng sự tò mò và tinh thần học hỏi." data-en="Built with curiosity and a learning mindset.">Được xây dựng bằng sự tò mò và tinh thần học hỏi.</span>
+    </div>
+  </footer>
+</div>
+<script>
+
+  // Reveal sections gently as they enter the viewport.
+  document.documentElement.classList.add('reveal-ready');
+  const revealItems = document.querySelectorAll('.skills-hero, .skill-card, .skills-note, .site-footer');
+  revealItems.forEach(item => item.classList.add('reveal'));
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealItems.forEach(item => revealObserver.observe(item));
+  } else {
+    revealItems.forEach(item => item.classList.add('is-visible'));
+  }
+
+  let language = 'vi';
+  const langBtn = document.getElementById('langBtn');
+  langBtn.addEventListener('click', () => {
+    language = language === 'vi' ? 'en' : 'vi';
+    document.documentElement.lang = language;
+    document.querySelectorAll('[data-vi][data-en]').forEach(el => el.textContent = el.dataset[language]);
+    langBtn.innerHTML = language === 'vi' ? '<b>VI</b> / EN' : 'VI / <b>EN</b>';
+  });
+
+  const themeBtn = document.getElementById('themeBtn');
+  const savedTheme = localStorage.getItem('kara-theme');
+  if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+  function syncThemeButton() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    themeBtn.textContent = isDark ? '☀' : '☾';
+    themeBtn.setAttribute('aria-label', isDark ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối');
+    themeBtn.title = isDark ? 'Chuyển sang giao diện sáng' : 'Chuyển sang giao diện tối';
+  }
+  syncThemeButton();
+  themeBtn.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) document.documentElement.removeAttribute('data-theme');
+    else document.documentElement.setAttribute('data-theme', 'dark');
+    localStorage.setItem('kara-theme', isDark ? 'light' : 'dark');
+    syncThemeButton();
+  });
+
+  const menuBtn = document.getElementById('menuBtn');
+  const nav = document.getElementById('nav');
+  menuBtn.addEventListener('click', () => {
+    const opened = nav.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', String(opened));
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+  }));
+</script>
+</body>
+</html>
