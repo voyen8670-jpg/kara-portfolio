@@ -589,7 +589,14 @@
   langBtn.addEventListener('click', () => {
     language = language === 'vi' ? 'en' : 'vi';
     document.documentElement.lang = language;
-    document.querySelectorAll('[data-vi][data-en]').forEach(el => el.textContent = el.dataset[language]);
+    document.querySelectorAll('[data-vi][data-en]').forEach(el => {
+      const value = el.dataset[language];
+      if (/<[a-z][\s\S]*>/i.test(value)) {
+        el.innerHTML = value;
+      } else {
+        el.textContent = value;
+      }
+    });
     langBtn.innerHTML = language === 'vi' ? '<b>VI</b> / EN' : 'VI / <b>EN</b>';
   });
 
